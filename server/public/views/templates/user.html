@@ -1,6 +1,22 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
 
-    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
+    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!!</h1>
+
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-input-container>
+        <label for="label">Spanish</label>
+        <input type="text" id="label" ng-model="tTitle">
+      </md-input-container>
+
+      <md-input-container>
+        <label for="content">English</label>
+        <input type="text" id="content" ng-model="tContent">
+      </md-input-container>
+      <md-button class="addBtn md-raised md-primary" ng-click="uc.addToPhrasebook()">Add</md-button>
+
+    </section>
+
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 </div>

@@ -1,9 +1,11 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var path = require('path');
 
 var passport = require('./strategies/mongo.localstrategy');
 var sessionConfig = require('./modules/session.config');
+var port = process.env.PORT || 5000;
 
 //DB Module
 var db = require('./modules/db.config.js');
@@ -12,8 +14,8 @@ var db = require('./modules/db.config.js');
 var indexRouter = require('./routes/index.router');
 var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
+var phrasebookRouter = require('./routes/phrasebook.router');
 
-var port = process.env.PORT || 5000;
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +34,7 @@ app.use(passport.session());
 // Routes
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
+app.use('/phrasebook', phrasebookRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

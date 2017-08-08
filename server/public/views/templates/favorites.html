@@ -1,0 +1,18 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+
+
+
+  <div class="row">
+    <div class="vocabularyList" ng-init="vc.getVocabulary()">
+      <label for="spanishWord">Spanish</label>
+      <input type="text" ng-model="vc.word1" placeholder="Enter a word">
+      <label for="englishWord">English</label>
+      <input type="text" ng-model="vc.word2" placeholder="Enter a word">
+      <button class="addBtn" ng-click="vc.postToVocabulary()">Add Word</button>
+    </div>
+
+    <p>
+      My favorite phrases
+    </p>
+  </div>
