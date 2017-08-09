@@ -1,14 +1,14 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div ng-controller="PhrasesController as pc">
-  <div class="phrasesList" ng-init="pc.getPhrasebook()">
+  <div class="phrasesList" ng-init="pc.user.getPhrasebook()">
     <div class="row">
             <div class="col-sm-3">
               <button class="allBtn" ng-click="pc.allPhrases()">All</button>
               <div class="card-block">
-                <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.allPhrase">
+                <p ng-repeat="phrases in pc.user.phrasebook" ng-init="editing=false" ng-show="pc.allPhrase">
                   {{ phrases.esphrase }} {{ phrases.enphrase }}
-                  <input type="text" ng-model="phrases.esphrase" ng-show="editing">
-                  <input type="text" ng-model="phrases.enphrase" ng-show="editing">
+                  <input type="text" ng-model="phrases.user.esphrase" ng-show="editing">
+                  <input type="text" ng-model="phrases.user.enphrase" ng-show="editing">
                   <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing">Save</button>
                   <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing">Edit</button>
                   <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'>Delete</button>

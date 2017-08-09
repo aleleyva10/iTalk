@@ -1,12 +1,9 @@
-myApp.controller('PhrasesController', ['UserService', 'PhrasesService', function(UserService, PhrasesService) {
+myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   console.log('PhrasesController created');
   var vm = this;
-  vm.userService = UserService;
-  vm.userObject = UserService.userObject;
 
-  vm.allPhrase = false;
   vm.phrasebook = [];
-
+  vm.allPhrase = false;
 
 vm.addToPhrasebook = function() {
   var newPhrases = {
@@ -16,15 +13,12 @@ vm.addToPhrasebook = function() {
   console.log('in controller sending:', newPhrases);
   PhrasesService.addToPhrasebook(newPhrases).then(function() {
     console.log('back in controller after post');
-    vm.userService.getuser();
     vm.getPhrasebook();
   });
   vm.esphrase = '';
   vm.enphrase= '';
 }; // end addToPhrasebook
 
-vm.userService.getuser();
-console.log('user object is:', vm.userObject);
 
 vm.getPhrasebook = function() {
   console.log('in controller, getPhrasebook');
@@ -37,7 +31,6 @@ vm.getPhrasebook = function() {
 vm.deletePhrases = function(phrases){
   console.log('in delete', phrases);
   PhrasesService.deletePhrases(phrases._id).then(function(){
-    vm.userService.getuser();
     vm.getPhrasebook();
   });
 }; // end deletePhrases
@@ -49,4 +42,4 @@ vm.updatePhrases = function(phrases) {
   });
 };
 
-}]);
+});
