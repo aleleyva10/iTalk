@@ -1,24 +1,41 @@
 <div ng-include="'views/partials/nav.html'"></div>
-  <div class="phrasesList">
-    <div class="row">
-            <div class="col-sm-3">
-              <button class="allBtn" ng-click="pc.allPhrases()">All</button>
-              <div class="card-block">
-                <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" >
-                  {{ phrases.esphrase }} {{ phrases.enphrase }}
-                  <input type="text" ng-model="phrases.esphrase" ng-show="editing">
-                  <input type="text" ng-model="phrases.enphrase" ng-show="editing">
-                  <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing">Save</button>
-                  <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing">Edit</button>
-                  <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'>Delete</button>
-                </p>
-              </div>
-  </div>
+<div class="phrasesList">
+  <div class="row">
 
-  <p>
-    Information is going to be here soon
-  </p>
-  <ul class="pager">
-    <li class="previous"><a href="#/user">Previous</a></li>
-    <li class="next"><a href="#/favorites">Next</a></li>
-  </ul>
+    <div class="card-block">
+      <button class="allBtn" ng-click="pc.allPhrases()">All</button>
+      <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.allPhrase">
+        {{ phrases.esphrase }} {{ phrases.enphrase }}
+        <input type="text" ng-model="phrases.esphrase" ng-show="editing">
+        <input type="text" ng-model="phrases.enphrase" ng-show="editing">
+        <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing">Save</button>
+        <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing">Edit</button>
+        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'>Delete</button>
+      </p>
+    </div>
+
+
+    <div class="card-block1">
+      <button class="spanishBtn" ng-click="pc.spanishPhrases()">Spanish</button>
+      <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.spanishPhrase">
+        {{ phrases.esphrase }}
+        <input type="text" ng-model="phrases.esphrase" ng-show="editing">
+        <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing">Save</button>
+        <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing">Edit</button>
+        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'>Delete</button>
+      </p>
+    </div>
+
+    <div class="card-block2">
+            <button class="englishBtn" ng-click="pc.englishPhrases()">English</button>
+            <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.englishPhrase">
+              {{ phrases.enphrase }}
+              <input type="text" ng-model="phrases.enphrase" ng-show="editing">
+              <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing">Save</button>
+              <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing">Edit</button>
+              <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'>Delete</button>
+            </p>
+          </div>
+
+  </div>
+</div>
