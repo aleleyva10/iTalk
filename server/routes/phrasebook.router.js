@@ -16,12 +16,16 @@ var phrasebookSchema = new mongoose.Schema({
 
 var phrasebookModel = mongoose.model('phrasebookModel', phrasebookSchema);
 
-router.use(bodyParser.urlencoded({extended: true}));
+router.use(bodyParser.urlencoded({
+  extended: true
+}));
 router.use(bodyParser.json());
 
 router.get('/', function(req, res) {
   console.log('phrasebookObjects get call');
-  phrasebookModel.find({userId: req.user._id}).then(function(results){
+  phrasebookModel.find({
+    userId: req.user._id
+  }).then(function(results) {
     res.send(results);
   });
 }); // end router get
@@ -44,7 +48,7 @@ router.delete('/:id', function(req, res) {
   console.log(id);
   phrasebookModel.remove({
     _id: id
-  }).then(function(){
+  }).then(function() {
     res.sendStatus(200);
   });
 }); // end router delete
@@ -56,14 +60,16 @@ router.put('/:id', function(req, res) {
     enphrase: req.body.enphrase,
   };
   console.log(id);
-  phrasebookModel.findByIdAndUpdate(
-    { _id: id},
-    { $set: {
-      esphrase: req.body.esphrase,
-      enphrase: req.body.enphrase
-    }},
+  phrasebookModel.findByIdAndUpdate({
+      _id: id
+    }, {
+      $set: {
+        esphrase: req.body.esphrase,
+        enphrase: req.body.enphrase
+      }
+    },
     function(err, data) {
-      if(err) {
+      if (err) {
         console.log('remove error:', err);
         res.sendStatus(500);
       } else {
