@@ -10,7 +10,8 @@ var Users = require('../models/user.js');
 mongoose.connect('localhost:27017/phrasebookVocab');
 var phrasebookSchema = new mongoose.Schema({
   esphrase: String,
-  enphrase: String
+  enphrase: String,
+  userId: String
 });
 
 var phrasebookModel = mongoose.model('phrasebookModel', phrasebookSchema);
@@ -20,7 +21,7 @@ router.use(bodyParser.json());
 
 router.get('/', function(req, res) {
   console.log('phrasebookObjects get call');
-  phrasebookModel.find().then(function(results){
+  phrasebookModel.find({userId: req.user._id}).then(function(results){
     res.send(results);
   });
 }); // end router get
@@ -30,7 +31,8 @@ router.post('/', function(req, res) {
   console.log('phrasebookObjects url hit', req.body);
   var phrasesToAdd = {
     esphrase: req.body.esphrase,
-    enphrase: req.body.enphrase
+    enphrase: req.body.enphrase,
+    userId: req.user._id
   };
   var newPhrases = phrasebookModel(phrasesToAdd);
   newPhrases.save();
@@ -55,7 +57,7 @@ router.put('/:id', function(req, res) {
   };
   console.log(id);
   phrasebookModel.findByIdAndUpdate(
-    { _id: req.user.id},
+    { _id: id},
     { $set: {
       esphrase: req.body.esphrase,
       enphrase: req.body.enphrase

@@ -10,7 +10,7 @@ myApp.factory('UserService', function($http, $location){
       console.log('UserService -- getuser');
       $http.get('/user').then(function(response) {
           if(response.data.username) {
-              // user has a curret session on the server
+              // user has a current session on the server
               userObject.userName = response.data.username;
               console.log('UserService -- getuser -- User Data: ', userObject.userName);
           } else {
