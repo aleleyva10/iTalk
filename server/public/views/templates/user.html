@@ -1,61 +1,37 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!!</h1>
-<h4>Enter a phrase or word in Spanish or English</h4>
 
-  <div class="content">
-    <div class="container-fluid">
-  <div class="row">
-    <div class="btn-group" uib-dropdown dropdown-append-to-body>
-          <button id="btn-append-to-body" type="button" class="btn btn-danger" uib-dropdown-toggle>
-            Choose language <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-            <li role="menuitem"><a href="#">Spanish</a></li>
-            <li role="menuitem"><a href="#">English</a></li>
-            <li role="menuitem"><a href="#">French</a></li>
+<div class="jumbotron">
+  <h4>Enter a phrase or word in Spanish or English</h4>
 
-          </ul>
-        </div>
+  <div class="btn-group" uib-dropdown dropdown-append-to-body>
+    <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+        Choose a language <span class="caret"></span>
+      </button>
+    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+      <li role="menuitem"><a href="#">Spanish</a></li>
+      <li role="menuitem"><a href="#">English</a></li>
+      <li role="menuitem"><a href="#">French</a></li>
 
+    </ul>
   </div>
 </div>
 
 
+<div class="inputs-container">
+  <label for="spanishPhrase">Spanish</label>
+  <input type="text" id="spanish" ng-model="uc.esphrase">
+  <br>
+  <label for="englishPhrase">English</label>
+  <input type="text" id="english" ng-model="uc.enphrase">
+  <button type="button" class="addBtn btn btn-info" ng-click="uc.addToPhrasebook()"><span class="glyphicon glyphicon-plus"></span> Add</button>
 </div>
 
 
+<button class="btn btn-danger">
+                 <span class="glyphicon glyphicon-trash"></span>Delete<button>
 
 
 
-    <!-- <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-      <md-input-container>
-        <label for="spanishPhrase">Spanish</label>
-        <input type="text" id="spanish" ng-model="uc.esphrase">
-      </md-input-container>
-
-      <md-input-container>
-        <label for="englishPhrase">English</label>
-        <input type="text" id="english" ng-model="uc.enphrase">
-      </md-input-container> -->
-
-      <button type="button" class="addBtn btn btn-info" ng-click="uc.addToPhrasebook()">Add</button>
-    </section>
-
-    <div class="container">
-      <div class="jumbotron">
-        <div class="btn-group" uib-dropdown dropdown-append-to-body>
-              <button id="btn-append-to-body" type="button" class="btn btn-danger" uib-dropdown-toggle>
-                Choose language <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-                <li role="menuitem"><a href="#">Spanish</a></li>
-                <li role="menuitem"><a href="#">English</a></li>
-                <li role="menuitem"><a href="#">French</a></li>
-
-              </ul>
-            </div>
-
-
-
-    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
-  </div>
+    <button class="btn btn-danger" ng-click="uc.userService.logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</button>
+</div>

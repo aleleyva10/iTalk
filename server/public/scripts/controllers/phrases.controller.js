@@ -1,7 +1,9 @@
 myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   console.log('PhrasesController created');
   var vm = this;
-  vm.allPhrase = false;
+  vm.userService = UserService;
+  vm.userObject = UserService.userObject;
+  vm.allPhrase = true;
   vm.spanishPhrase = false;
   vm.englishPhrase = false;
   vm.phrasebook = [];
