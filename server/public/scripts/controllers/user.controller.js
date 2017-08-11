@@ -16,7 +16,7 @@ myApp.controller('UserController', function(UserService, PhrasesService) {
       vm.getPhrasebook();
     });
     vm.esphrase = '';
-    vm.enphrase= '';
+    vm.enphrase = '';
   }; // end addToPhrasebook
 
 
@@ -27,4 +27,6 @@ myApp.controller('UserController', function(UserService, PhrasesService) {
       console.log('back in controller with:', vm.phrasebook);
     });
   }; // end getPhrasebook
-});
+
+
+}); // end user controller

@@ -1,7 +1,5 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!!</h1>
-
-<div class="jumbotron">
   <h4>Enter a phrase or word in Spanish or English</h4>
 
   <div class="btn-group" uib-dropdown dropdown-append-to-body>
@@ -12,10 +10,8 @@
       <li role="menuitem"><a href="#">Spanish</a></li>
       <li role="menuitem"><a href="#">English</a></li>
       <li role="menuitem"><a href="#">French</a></li>
-
     </ul>
   </div>
-</div>
 
 
 <div class="inputs-container">
@@ -26,11 +22,6 @@
   <input type="text" id="english" ng-model="uc.enphrase">
   <button type="button" class="addBtn btn btn-info" ng-click="uc.addToPhrasebook()"><span class="glyphicon glyphicon-plus"></span> Add</button>
 </div>
-
-
-<button class="btn btn-danger">
-                 <span class="glyphicon glyphicon-trash"></span>Delete<button>
-
 
 
     <button class="btn btn-danger" ng-click="uc.userService.logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</button>

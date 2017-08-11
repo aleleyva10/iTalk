@@ -100,6 +100,20 @@ router.put('/favorite/:id', function(req, res) {
       }
     }
   );
-});
+}); // end router put favorite
+
+
+router.get('/favorite', function(req, res) {
+  console.log('phrasebookObjects get call');
+  phrasebookModel.find({
+    userId: req.user._id,
+    favorite: true
+  }).then(function(results) {
+    res.send(results);
+  }).catch(function(err){
+    res.sendStatus(500);
+  });
+}); // end router get favorite
+
 
 module.exports = router;

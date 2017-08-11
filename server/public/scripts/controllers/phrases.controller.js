@@ -35,6 +35,14 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
     PhrasesService.addToFavorites(phrases._id).then(function() {
+
+    });
+  };
+
+  vm.getFavorites = function(phrases) {
+    console.log('in get favorites', phrases);
+    PhrasesService.getFavorites().then(function() {
+
     });
   };
 
@@ -55,4 +63,4 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
 
   vm.getPhrasebook();
 
-}); // end controller
+}); // end phrases controller

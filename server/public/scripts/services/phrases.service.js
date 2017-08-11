@@ -44,11 +44,24 @@ myApp.service('PhrasesService', function($http) {
   sv.addToFavorites = function(id) {
     console.log('in service sending:', id);
     return $http({
-      method:'PUT',
+      method: 'PUT',
       url: '/phrasebook/favorite/' + id,
-    }).then(function(response){
+    }).then(function(response) {
       console.log('back from addToFavorites:', response);
-    });
-  };
+    }); // end $http
+  }; // end addToFavorites
+
+
+  sv.getFavorites = function() {
+    console.log('in service, getFavorites');
+    return $http({
+      method: 'GET',
+      url: '/phrasebook/favorite/',
+    }).then(function(response) {
+      console.log('in service back from server with:', response);
+      sv.data = response.data;
+    }); // end $http
+  }; // end get favorites
+
 
 }); // end service
