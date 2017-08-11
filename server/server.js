@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
+var swal = require('sweetalert2');
 
 var passport = require('./strategies/mongo.localstrategy');
 var sessionConfig = require('./modules/session.config');
