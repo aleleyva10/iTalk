@@ -11,7 +11,8 @@ mongoose.connect('localhost:27017/phrasebookVocab');
 var phrasebookSchema = new mongoose.Schema({
   esphrase: String,
   enphrase: String,
-  userId: String
+  userId: String,
+  favorite: {type: Boolean, default: false}
 });
 
 var phrasebookModel = mongoose.model('phrasebookModel', phrasebookSchema);
@@ -78,5 +79,27 @@ router.put('/:id', function(req, res) {
     }
   );
 }); // end router put
+
+
+router.put('/favorite/:id', function(req, res) {
+  console.log('phrasebookObjects url hit', req.params);
+  var id = req.params.id;
+  phrasebookModel.findByIdAndUpdate({
+      _id: id
+    }, {
+      $set: {
+        favorite: true
+      }
+    },
+    function(err, data) {
+      if (err) {
+        console.log('remove error:', err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    }
+  );
+});
 
 module.exports = router;
