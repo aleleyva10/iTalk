@@ -30,36 +30,40 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
     PhrasesService.updatePhrases(phrases).then(function() {
       vm.getPhrasebook();
     });
-  };
+  }; // end updatePhrases
 
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
     PhrasesService.addToFavorites(phrases._id).then(function() {
-
     });
-  };
+  }; // end addToFavorites
 
   vm.getFavorites = function(phrases) {
     console.log('in get favorites', phrases);
     PhrasesService.getFavorites().then(function() {
-
     });
-  };
+  }; // end getFavorites
+
+  vm.deleteFavorites = function(phrases) {
+    console.log('in delete', phrases);
+    PhrasesService.deleteFavorites(phrases._id).then(function() {
+    });
+  }; // end deleteFavorites
 
   vm.allPhrases = function() {
     vm.allPhrase = !vm.allPhrase;
     console.log('in  allPhrase');
-  };
+  }; // end allPhrases
 
   vm.spanishPhrases = function() {
     vm.spanishPhrase = !vm.spanishPhrase;
     console.log('in spanishPhrase');
-  };
+  }; // end spanishPhrases
 
   vm.englishPhrases = function() {
     vm.englishPhrase = !vm.englishPhrase;
     console.log('in englishPhrase');
-  };
+  }; // end englishPhrases
 
   vm.getPhrasebook();
 

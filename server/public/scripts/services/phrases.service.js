@@ -61,7 +61,17 @@ myApp.service('PhrasesService', function($http) {
       console.log('in service back from server with:', response);
       sv.data = response.data;
     }); // end $http
-  }; // end get favorites
+  }; // end getFavorites
+
+  sv.deleteFavorites = function(id) {
+    console.log('in service, deleteFavorites');
+    return $http({
+      method: 'PUT',
+      url: '/phrasebook/favorite/remove/' + id,
+    }).then(function(response) {
+      console.log('back from deleteFavorites', response);
+    }); // end $http
+  }; // end deleteFavorites
 
 
 }); // end service

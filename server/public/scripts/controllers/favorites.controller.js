@@ -10,16 +10,22 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
     console.log('in add to favorites', phrases);
     PhrasesService.addToFavorites(phrases._id).then(function() {
     });
-  };
+  }; // end addToFavorites
 
   vm.getFavorites = function() {
     console.log('in controller, getFavorites');
-    PhrasesService.getFavorites().then(function(){
+    PhrasesService.getFavorites().then(function() {
       vm.phrasebook = PhrasesService.data;
       console.log('back in controller with:', vm.phrasebook);
     });
   }; // end getPhrasebook
 
-vm.getFavorites();
+  vm.deleteFavorites = function(phrases) {
+    console.log('in delete', phrases);
+    PhrasesService.deleteFavorites(phrases._id).then(function() {
+    });
+  }; // end deleteFavorites
+
+  vm.getFavorites();
 
 }); // end favorites controller

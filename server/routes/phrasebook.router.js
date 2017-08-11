@@ -116,4 +116,26 @@ router.get('/favorite', function(req, res) {
 }); // end router get favorite
 
 
+router.put('/favorite/remove/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  phrasebookModel.findByIdAndUpdate({
+      _id: id
+    }, {
+      $set: {
+        favorite: false
+      }
+    },
+    function(err, data) {
+      if (err) {
+        console.log('remove error:', err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    }
+  );
+}); // end router delete
+
+
 module.exports = router;
