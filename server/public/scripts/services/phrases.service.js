@@ -41,4 +41,15 @@ myApp.service('PhrasesService', function($http) {
     }); // end $http
   }; // end updatePhrases
 
+  sv.addToFavorites = function(favorites) {
+    console.log('in service sending:', favorites);
+    return $http({
+      method:'POST',
+      url: '/phrasebook',
+      data: favorites
+    }).then(function(response){
+      console.log('back from addToFavorites:', response);
+    });
+  };
+
 }); // end service

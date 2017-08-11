@@ -11,9 +11,9 @@
     <div class="all-phrases">
 
       <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.allPhrase">
-         {{ pc.userObject.userName }} :
-         <br>
-         <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
+        {{ pc.userObject.userName }} :
+        <br>
+        <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
         <br>
         <span class="label label-primary">English</span> {{ phrases.enphrase }}
         <input type="text" ng-model="phrases.esphrase" ng-show="editing">
@@ -21,32 +21,38 @@
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
         <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="playBtn" ng-click='pc.playPhrases(phrases)'><span class="glyphicon glyphicon-play"></span></button>
       </p>
     </div>
 
     <div class="spanish-phrases">
 
       <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.spanishPhrase">
-         {{ pc.userObject.userName }} :
-         <br>
+        {{ pc.userObject.userName }} :
+        <br>
         <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
         <input type="text" ng-model="phrases.esphrase" ng-show="editing">
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
         <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="playBtn" ng-click='pc.playPhrases(phrases)'><span class="glyphicon glyphicon-play"></span></button>
       </p>
     </div>
 
     <div class="english-phrases">
 
       <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.englishPhrase">
-         {{ pc.userObject.userName }} :
-         <br>
+        {{ pc.userObject.userName }} :
+        <br>
         <span class="label label-primary">English</span> {{ phrases.enphrase }}
         <input type="text" ng-model="phrases.enphrase" ng-show="editing">
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
         <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="playBtn" ng-click='pc.playPhrases(phrases)'><span class="glyphicon glyphicon-play"></span></button>
       </p>
     </div>
 

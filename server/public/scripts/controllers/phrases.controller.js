@@ -7,6 +7,7 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   vm.spanishPhrase = false;
   vm.englishPhrase = false;
   vm.phrasebook = [];
+  vm.favorites = [];
 
 
   vm.getPhrasebook = function() {
@@ -31,6 +32,11 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
     });
   };
 
+  vm.addToFavorites = function(phrases) {
+    console.log('in add to favorites', phrases);
+    PhrasesService.addToFavorites(phrases._id).then(function() {
+    });
+  };
 
   vm.allPhrases = function() {
     vm.allPhrase = !vm.allPhrase;
@@ -38,14 +44,14 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   };
 
   vm.spanishPhrases = function() {
-      vm.spanishPhrase = !vm.spanishPhrase;
-      console.log('in spanishPhrase');
-    };
+    vm.spanishPhrase = !vm.spanishPhrase;
+    console.log('in spanishPhrase');
+  };
 
-    vm.englishPhrases = function() {
-      vm.englishPhrase = !vm.englishPhrase;
-      console.log('in englishPhrase');
-    };
+  vm.englishPhrases = function() {
+    vm.englishPhrase = !vm.englishPhrase;
+    console.log('in englishPhrase');
+  };
 
   vm.getPhrasebook();
 
