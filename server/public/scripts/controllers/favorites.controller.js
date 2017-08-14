@@ -9,6 +9,8 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
     PhrasesService.addToFavorites(phrases._id).then(function() {
+      console.log('favorites added');
+      vm.getFavorites();
     });
   }; // end addToFavorites
 
@@ -18,40 +20,11 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
       vm.phrasebook = PhrasesService.data;
       console.log('back in controller with:', vm.phrasebook);
     });
-  }; // end getPhrasebook
+  }; // end getFavorites
 
   vm.deleteFavorites = function(phrases) {
     console.log('in delete', phrases);
     PhrasesService.deleteFavorites(phrases._id).then(function() {
-      swal({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  type: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!',
-  cancelButtonText: 'No, cancel!',
-  confirmButtonClass: 'btn btn-success',
-  cancelButtonClass: 'btn btn-danger',
-  buttonsStyling: false
-}).then(function () {
-  swal(
-    'Deleted!',
-    'Your file has been deleted.',
-    'success'
-  );
-}, function (dismiss) {
-  // dismiss can be 'cancel', 'overlay',
-  // 'close', and 'timer'
-  if (dismiss === 'cancel') {
-    swal(
-      'Cancelled',
-      'Your imaginary file is safe :)',
-      'error'
-    );
-  }
-});
       console.log('favorites deleted');
       vm.getFavorites();
     });
