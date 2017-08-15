@@ -2,6 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+
 // Express router to mount phrasebook related functions on.
 var router = express.Router();
 var Users = require('../models/user.js');
@@ -11,7 +12,7 @@ mongoose.connect('localhost:27017/phrasebookVocab');
 var phrasebookSchema = new mongoose.Schema({
   esphrase: String,
   enphrase: String,
-  userId: String,
+  username: String,
   favorite: {type: Boolean, default: false}
 });
 
@@ -22,10 +23,18 @@ router.use(bodyParser.urlencoded({
 }));
 router.use(bodyParser.json());
 
+router.get('/allPhrases', function(req, res){
+  console.log('in phrasebook get call');
+  phrasebookModel.find({}).then(function(results){
+    res.send(results);
+  });
+}); // end get router
+
+
 router.get('/', function(req, res) {
   console.log('phrasebookObjects get call');
   phrasebookModel.find({
-    userId: req.user._id
+    username: req.user.username
   }).then(function(results) {
     res.send(results);
   });
@@ -37,7 +46,7 @@ router.post('/', function(req, res) {
   var phrasesToAdd = {
     esphrase: req.body.esphrase,
     enphrase: req.body.enphrase,
-    userId: req.user._id
+    username: req.user.username
   };
   var newPhrases = phrasebookModel(phrasesToAdd);
   newPhrases.save();
@@ -106,7 +115,7 @@ router.put('/favorite/:id', function(req, res) {
 router.get('/favorite', function(req, res) {
   console.log('phrasebookObjects get call');
   phrasebookModel.find({
-    userId: req.user._id,
+    username: req.user.username,
     favorite: true
   }).then(function(results) {
     res.send(results);
@@ -118,7 +127,7 @@ router.get('/favorite', function(req, res) {
 
 router.put('/favorite/remove/:id', function(req, res) {
   var id = req.params.id;
-  console.log(id);
+  console.log(username);
   phrasebookModel.findByIdAndUpdate({
       _id: id
     }, {

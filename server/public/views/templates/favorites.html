@@ -2,22 +2,26 @@
 <div class="favorites-container">
   <h3> My Favorite Phrases</h3>
 
+
   <div class="favorite-spanish">
     <h4> Spanish</h4>
-    <p ng-repeat="phrases in fc.phrasebook">
-      {{ fc.userObject.userName }} :
+    <p ng-repeat="phrases in fc.allPhrases">
+      {{ phrases.username }} :
       <br>
       <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
       <button class="deleteBtn" ng-click='fc.deleteFavorites(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
       <button class="playBtn" ng-click='fc.playPhrases(phrases)'><span class="glyphicon glyphicon-play"></span></button>
       <button class="playBtn" ng-click='pc.playPhrases(phrases)'><span class="glyphicon glyphicon-transfer"></span></button>
+
+      <input onclick="responsiveVoice.speak('Hola', 'Spanish Female');" type="button" value="🔊 Play" />
+
     </p>
   </div>
 
   <div class="favorite-english">
     <h4> English</h4>
     <p ng-repeat="phrases in fc.phrasebook">
-      {{ fc.userObject.userName }} :
+      {{ phrases.username }} :
       <br>
       <span class="label label-primary">English</span> {{ phrases.enphrase }}
       <button class="deleteBtn" ng-click='fc.deleteFavorites(phrases)'><span class="glyphicon glyphicon-trash"></span></button>

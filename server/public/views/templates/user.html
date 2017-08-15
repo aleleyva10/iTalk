@@ -2,18 +2,6 @@
 <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!!</h1>
   <h4>Enter a phrase or word in Spanish or English</h4>
 
-  <div class="btn-group" uib-dropdown dropdown-append-to-body>
-    <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
-        Choose a language <span class="caret"></span>
-      </button>
-    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-      <li role="menuitem"><a href="#">Spanish</a></li>
-      <li role="menuitem"><a href="#">English</a></li>
-      <li role="menuitem"><a href="#">French</a></li>
-    </ul>
-  </div>
-
-
 <div class="inputs-container">
   <label for="spanishPhrase">Spanish</label>
   <input type="text" id="spanish" ng-model="uc.esphrase">

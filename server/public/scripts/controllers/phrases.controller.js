@@ -3,12 +3,12 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   var vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
-  vm.allPhrase = true;
+  vm.listPhrase = true;
   vm.spanishPhrase = false;
   vm.englishPhrase = false;
   vm.phrasebook = [];
   vm.favorites = [];
-
+  vm.allPhrases =[];
 
   vm.getPhrasebook = function() {
     console.log('in controller, getPhrasebook');
@@ -17,6 +17,14 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
       console.log('back in controller with:', vm.phrasebook);
     });
   }; // end getPhrasebook
+
+  vm.getAllPhrases = function() {
+    console.log('in controller, getAllPhrases');
+    PhrasesService.getAllPhrases().then(function() {
+      vm.allPhrases = PhrasesService.data;
+      console.log('back in controller with:', vm.allPhrases);
+    });
+  }; // end getAllPhrases
 
   vm.deletePhrases = function(phrases) {
     console.log('in delete', phrases);
@@ -34,7 +42,7 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
 
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
-    PhrasesService.addToFavorites(phrases._id).then(function() {
+    PhrasesService.addToFavorites(phrases.username).then(function() {
     });
   }; // end addToFavorites
 
@@ -50,10 +58,10 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
     });
   }; // end deleteFavorites
 
-  vm.allPhrases = function() {
-    vm.allPhrase = !vm.allPhrase;
-    console.log('in  allPhrase');
-  }; // end allPhrases
+  vm.phrasesList = function() {
+    vm.listPhrase = !vm.listPhrase;
+    console.log('in  phrasesList');
+  }; // end phrasesList
 
   vm.spanishPhrases = function() {
     vm.spanishPhrase = !vm.spanishPhrase;
@@ -64,7 +72,7 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
     vm.englishPhrase = !vm.englishPhrase;
     console.log('in englishPhrase');
   }; // end englishPhrases
-
   vm.getPhrasebook();
+  vm.getAllPhrases();
 
 }); // end phrases controller

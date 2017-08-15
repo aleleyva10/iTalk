@@ -1,10 +1,17 @@
-# Name of Project
+# Name of Project: iTalk
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
 
-## Built With
+iTalk is a full-stack mobile application that provides the user with common phrases in Spanish and English, the application would allow the user to speak and learn the basics of the desired language. It gives the user the possibility to use these common phrases, add phrases to your favorites, and check what new phrases other users have upload to the application. Also, it gives you the translation of any new phrase you enter, in Spanish or in English.
 
-List technologies and frameworks here
+
+## Technologies and frameworks
+
+Node
+Express
+Angular
+MongoDB
+Heroku
+
 
 ## Getting Started
 
@@ -22,13 +29,6 @@ Link to software that is required to install the app (e.g. node).
 
 Steps to get the development environment running.
 
-## Screen Shot
-
-Include one or two screen shots of your project here (optional). Remove if unused.
-
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
 ### Completed Features
 
@@ -49,9 +49,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* Name of author(s)
+* Alessandro Leyva(s)
 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Thanks to Scott Bromander and Kris Szafranski for the base code and passport authentication for my project. Also, to Chris Black for his help and support to make this project a reality.

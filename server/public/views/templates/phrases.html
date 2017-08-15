@@ -1,20 +1,19 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="phrasesList">
-  <div class="container-fluid">
+  <div class="container">
 
     <h3> My Phrasebook</h3>
 
     <div class="btn-container">
-      <button class="allBtn" ng-click="pc.allPhrases()">All</button>
+      <button class="allBtn" ng-click="pc.phrasesList()">All</button>
       <button class="spanishBtn" ng-click="pc.spanishPhrases()">Spanish</button>
       <button class="englishBtn" ng-click="pc.englishPhrases()">English</button>
     </div>
 
     <div class="all-phrases">
-
-      <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.allPhrase">
-        {{ pc.userObject.userName }} :
-        <br>
+     <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.listPhrase">
+       {{ phrases.username }} :
+       <br>
         <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
         <br>
         <span class="label label-primary">English</span> {{ phrases.enphrase }}
@@ -29,9 +28,8 @@
     </div>
 
     <div class="spanish-phrases">
-
-      <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.spanishPhrase">
-        {{ pc.userObject.userName }} :
+      <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.spanishPhrase">
+        {{ phrases.username }} :
         <br>
         <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
         <input type="text" ng-model="phrases.esphrase" ng-show="editing">
@@ -44,9 +42,8 @@
     </div>
 
     <div class="english-phrases">
-
-      <p ng-repeat="phrases in pc.phrasebook" ng-init="editing=false" ng-show="pc.englishPhrase">
-        {{ pc.userObject.userName }} :
+      <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.englishPhrase">
+        {{ phrases.username }} :
         <br>
         <span class="label label-primary">English</span> {{ phrases.enphrase }}
         <input type="text" ng-model="phrases.enphrase" ng-show="editing">
@@ -57,7 +54,6 @@
         <button class="playBtn" ng-click='pc.playPhrases(phrases)'><span class="glyphicon glyphicon-play"></span></button>
       </p>
     </div>
-
 
   </div>
 </div>

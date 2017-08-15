@@ -24,6 +24,17 @@ myApp.service('PhrasesService', function($http) {
     }); // end $http
   }; // end getPhrasebook
 
+  sv.getAllPhrases = function() {
+    console.log('in service, getPhrasebook');
+    return $http({
+      method: 'GET',
+      url: '/phrasebook/allPhrases'
+    }).then(function(response) {
+      console.log('in service back from server with:', response);
+      sv.data = response.data;
+    }); // end $http
+  }; // end getPhrasebook
+
   sv.deletePhrases = function(id) {
     return $http({
       method: 'DELETE',

@@ -5,10 +5,12 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
   vm.userObject = UserService.userObject;
   vm.favorites = [];
   vm.phrasebook = [];
+  vm.readPhrase = [];
+  vm.allPhrases =[];
 
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
-    PhrasesService.addToFavorites(phrases._id).then(function() {
+    PhrasesService.addToFavorites(phrases.username).then(function() {
       console.log('favorites added');
       vm.getFavorites();
     });
@@ -17,8 +19,8 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
   vm.getFavorites = function() {
     console.log('in controller, getFavorites');
     PhrasesService.getFavorites().then(function() {
-      vm.phrasebook = PhrasesService.data;
-      console.log('back in controller with:', vm.phrasebook);
+      vm.allPhrases = PhrasesService.data;
+      console.log('back in controller with:', vm.allPhrases);
     });
   }; // end getFavorites
 
@@ -30,6 +32,17 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
     });
   }; // end deleteFavorites
 
+  vm.readPhrase = function(phrases) {
+    console.log('in readPhrase');
+    PhrasesService.readPhrase(phrases._id).then(function() {
+
+      console.log('reading phrases');
+    });
+  }; // end readPhrase
+
+
   vm.getFavorites();
+
+
 
 }); // end favorites controller
