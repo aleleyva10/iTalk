@@ -42,8 +42,9 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
 
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
-    PhrasesService.addToFavorites(phrases.username).then(function() {
+    PhrasesService.addToFavorites(phrases._id).then(function() {
     });
+    vm.getFavorites();
   }; // end addToFavorites
 
   vm.getFavorites = function(phrases) {

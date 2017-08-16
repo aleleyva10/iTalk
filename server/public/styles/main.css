@@ -3,6 +3,7 @@ body, html {
   padding: 0;
   font-family: Raleway,sans-serif;
   font-size: 14px;
+  background-color: #30C5FF;
 
 }
 
@@ -12,9 +13,20 @@ h1 {
   padding: 0px;
   margin: 2px;
   font-size: 75px;
+color: white;
+  
 }
 
+}
 h4 {
+  text-align: center;
+  color: white;
+
+}
+h2 {
+  color: white;
+}
+h3 {
   text-align: center;
 }
 
@@ -29,8 +41,8 @@ h4 {
 }
 
 .instructions {
-  background-color:white;
-  color: #30C5FF;
+  background-color:#30C5FF;
+  color: white;
   padding: 15px;
 }
 
@@ -45,14 +57,30 @@ h4 {
 
 .container p {
   margin-top : 14px;
+}
+
+label {
+  color: white;
+}
+
+form {
+  text-align: center;
 
 }
 
+.userTitle{
+  color: white;
+}
+
+.register-input {
+  text-align: center;
+}
 .img-responsive {
   margin: 0 auto;
   height: 250px;
   width: 250px;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 55px;
 }
 
 .message {
@@ -71,7 +99,7 @@ h4 {
   background-color: #f8f8f8;
 }
 
-.btn-danger{
+.btn-danger {
   margin-left: 10px;
 }
 .logoutBtn {
@@ -79,7 +107,7 @@ h4 {
 }
 
 .navbar {
-  background-color: gray;
+  background-color: #D7C80B;
   width: 100%;
   border-radius: 0px;
 
@@ -107,5 +135,5 @@ h4 {
 /* Change the link color to #111 (black) on hover */
 .navbar li a:hover {
   text-decoration: underline;
-  color: #eee;
+  color: black;
 }

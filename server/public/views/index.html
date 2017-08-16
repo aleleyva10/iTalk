@@ -4,14 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title>Solo Project</title>
-  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap-theme.css">
-  <link rel="stylesheet" type="text/css" href="vendors/sweetalert2/sweetalert2.min.css">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="styles/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
   <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
   <script type="text/javascript" src="vendors/angular/angular-animate.js"></script>
@@ -30,9 +25,16 @@
 
 
 
+  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap-theme.css">
+
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" type="text/css" href="vendors/sweetalert2/sweetalert2.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body ng-app="myApp">
+
   <header ng-include="'/views/partials/header.html'"></header>
 
   <main ng-view></main>

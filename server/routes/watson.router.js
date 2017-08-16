@@ -18,11 +18,11 @@ router.use(bodyParser.urlencoded({
 // });
 
 //post request
-router.post('/', function(req, res) {
-  console.log(req.body.text);
+router.get('/:text', function(req, res) {
+  console.log(req.params.text);
 
   var params = {
-    text: req.body.text,
+    text: req.params.text,
     voice: 'en-US_AllisonVoice',
     accept: 'audio/wav'
   };
@@ -42,15 +42,5 @@ router.post('/', function(req, res) {
   res.send('something');
 });
 
-// get request
-router.get('/', function(req, res) {
-  console.log('phrases get call');
-    phrasebookModel.find({
-      userId: req.user._id
-    }).then(function(results) {
-      res.send(results);
-    });  // end router get
-
-});
 
 module.exports = router;

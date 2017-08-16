@@ -10,10 +10,10 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
 
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
-    PhrasesService.addToFavorites(phrases.username).then(function() {
+    PhrasesService.addToFavorites(phrases._id).then(function() {
       console.log('favorites added');
-      vm.getFavorites();
     });
+    vm.getFavorites();
   }; // end addToFavorites
 
   vm.getFavorites = function() {
