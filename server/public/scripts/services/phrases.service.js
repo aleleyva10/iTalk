@@ -39,22 +39,8 @@ myApp.service('PhrasesService', function($http) {
     return $http({
       method: 'DELETE',
       url: '/phrasebook/' + id,
-    }).then(function() {
-      swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then(function() {
-        swal(
-          'Deleted!',
-          'Your phrase has been deleted.',
-          'success'
-        ).catch(swal.noop);
-      });
+    }).then(function(response) {
+      return response;
     }); // end $http
   }; // end deletePhrases
 
@@ -75,11 +61,6 @@ myApp.service('PhrasesService', function($http) {
       url: '/phrasebook/favorite/' + id,
     }).then(function(response) {
       console.log('back from addToFavorites:', response);
-      swal(
-        'Good job!',
-        'Phrase added to Favorites!',
-        'success'
-      );
     }); // end $http
   }; // end addToFavorites
 
@@ -91,7 +72,7 @@ myApp.service('PhrasesService', function($http) {
       url: '/phrasebook/favorite/',
     }).then(function(response) {
       console.log('in service back from server with:', response);
-      sv.data = response.data;
+      sv.data = response.data.favorites;
     }); // end $http
   }; // end getFavorites
 
@@ -102,36 +83,7 @@ myApp.service('PhrasesService', function($http) {
       url: '/phrasebook/favorite/remove/' + id,
     }).then(function(response) {
       console.log('back from deleteFavorites', response);
-      swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false
-      }).then(function() {
-        swal(
-          'Deleted!',
-          'Your phrase has been deleted.',
-          'success'
-        );
-      }, function(dismiss) {
-        // dismiss can be 'cancel', 'overlay',
-        // 'close', and 'timer'
-        if (dismiss === 'cancel') {
-          swal(
-              'Cancelled',
-              'Your favorite phrase is safe :)',
-              'error'
-            )
-            .catch(swal.noop);
-        }
-      });
+      return response;
     }); // end $http
   }; // end deleteFavorites
 

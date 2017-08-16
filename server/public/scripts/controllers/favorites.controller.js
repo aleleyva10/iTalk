@@ -1,12 +1,13 @@
-myApp.controller('FavoritesController', function(UserService, PhrasesService) {
+myApp.controller('FavoritesController', function($scope, UserService, PhrasesService) {
   console.log('FavoritesController created');
   var vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.favorites = [];
   vm.phrasebook = [];
-  vm.readPhrase = [];
   vm.allPhrases =[];
+
+  $scope.responsiveVoice = responsiveVoice;
 
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
@@ -32,17 +33,7 @@ myApp.controller('FavoritesController', function(UserService, PhrasesService) {
     });
   }; // end deleteFavorites
 
-  vm.readPhrase = function(phrases) {
-    console.log('in readPhrase');
-    PhrasesService.readPhrase(phrases._id).then(function() {
-
-      console.log('reading phrases');
-    });
-  }; // end readPhrase
-
 
   vm.getFavorites();
-
-
 
 }); // end favorites controller

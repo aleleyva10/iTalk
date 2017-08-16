@@ -1,11 +1,13 @@
 <div class="container">
   <div class="content">
+    <img class="img-responsive" src="views/images/175x175bb.jpg" alt="">
+    <h1 class="lead text-center">A SIMPLE WAY TO LEARN A LANGUAGE</h1>
     <h1 class="lead">Register User</h1>
     <h2 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
     <form ng-submit="lc.registerUser()">
       <div>
         <label for="username">Username:</label>
-        <input type="text" class="user-input"ng-model="lc.user.username" />
+        <input type="text" class="user-input" ng-model="lc.user.username" />
       </div>
       <div>
         <label for="password">Password:</label>

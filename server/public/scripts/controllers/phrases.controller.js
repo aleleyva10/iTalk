@@ -8,7 +8,7 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   vm.englishPhrase = false;
   vm.phrasebook = [];
   vm.favorites = [];
-  vm.allPhrases =[];
+  vm.allPhrases = [];
 
   vm.getPhrasebook = function() {
     console.log('in controller, getPhrasebook');
@@ -27,10 +27,27 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   }; // end getAllPhrases
 
   vm.deletePhrases = function(phrases) {
-    console.log('in delete', phrases);
-    PhrasesService.deletePhrases(phrases._id).then(function() {
-      vm.getPhrasebook();
-    });
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function() {
+      console.log('in delete', phrases);
+      PhrasesService.deletePhrases(phrases._id).then(function(response) {
+        console.log('delete complete');
+        vm.getAllPhrases();
+        swal(
+          'Deleted!',
+          'Your phrase has been deleted.',
+          'success'
+        );
+      });
+    }).catch(swal.noop);
+
   }; // end deletePhrases
 
   vm.updatePhrases = function(phrases) {
@@ -43,6 +60,11 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   vm.addToFavorites = function(phrases) {
     console.log('in add to favorites', phrases);
     PhrasesService.addToFavorites(phrases._id).then(function() {
+      swal(
+        'Good job!',
+        'Phrase added to Favorites!',
+        'success'
+      );
     });
     vm.getFavorites();
   }; // end addToFavorites
@@ -50,13 +72,44 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   vm.getFavorites = function(phrases) {
     console.log('in get favorites', phrases);
     PhrasesService.getFavorites().then(function() {
+
     });
   }; // end getFavorites
 
   vm.deleteFavorites = function(phrases) {
-    console.log('in delete', phrases);
-    PhrasesService.deleteFavorites(phrases._id).then(function() {
-    });
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: false
+    }).then(function() {
+      console.log('in delete favorites', phrases);
+      PhrasesService.deleteFavorites(phrases._id).then(function(response) {
+        vm.getFavorites();
+      });
+      swal(
+        'Deleted!',
+        'Your phrase has been deleted.',
+        'success'
+      );
+    }, function(dismiss) {
+      // dismiss can be 'cancel', 'overlay', 'close'
+      if (dismiss === 'cancel') {
+        swal(
+          'Cancelled',
+          'Your favorite phrase is safe :)',
+          'error'
+        );
+      }
+    }).catch(swal.noop);
+
   }; // end deleteFavorites
 
   vm.phrasesList = function() {

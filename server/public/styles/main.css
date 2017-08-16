@@ -1,33 +1,59 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: Raleway,sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 14px;
   background-color: #30C5FF;
-
 }
+
 
 h1 {
   font-family: Raleway, sans-serif;
   text-align: center;
   padding: 0px;
   margin: 2px;
-  font-size: 75px;
-color: white;
-  
+  font-size: 85px;
+  color: white;
 }
 
+h2 {
+  text-align: center;
+  font-size: 25px;
+  color: white;
 }
+
+h3 {
+  text-align: center;
+  color: white;
+}
+
 h4 {
   text-align: center;
   color: white;
+}
 
+.all-phrases {
+background-color: #EFEEEC;
+max-width: 25em;
+padding: 1em;
+border-radius: 2em;
+margin: 1em;
 }
-h2 {
-  color: white;
+
+.spanish-phrases {
+  background-color: #EFEEEC;
+  max-width: 25em;
+  padding: 1em;
+  border-radius: 2em;
+  margin: 1em;
 }
-h3 {
-  text-align: center;
+
+.english-phrases {
+  background-color: #EFEEEC;
+  max-width: 25em;
+  padding: 1em;
+  border-radius: 2em;
+  margin: 1em;
 }
 
 .btn-container {
@@ -67,6 +93,7 @@ form {
   text-align: center;
 
 }
+
 
 .userTitle{
   color: white;

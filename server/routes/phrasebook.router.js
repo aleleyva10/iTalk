@@ -12,11 +12,7 @@ mongoose.connect('localhost:27017/phrasebookVocab');
 var phrasebookSchema = new mongoose.Schema({
   esphrase: String,
   enphrase: String,
-  username: String,
-  favorite: {
-    type: Boolean,
-    default: false
-  }
+  username: String
 });
 
 var phrasebookModel = mongoose.model('phrasebookModel', phrasebookSchema);
@@ -106,44 +102,19 @@ router.put('/favorite/:id', function(req, res) {
         res.sendStatus(500);
       } else {
         // push to id favorites
-        user.findOne({  _id: id
-         }, {
-         $set: {
-          favorite: true
-        }
-      }.populate(favorite._id)
-);
-console.log('in update favorites id');
+        user.favorites.push(id);
+        console.log('in update favorites id');
+        // save the user
+        user.save(function(err) {
+          if (err) {
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(200);
+          }
+        });
       }
-      // save the user
-      user.save(function(err) {
-        if (err) {
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(200);
-        }
-      });
     }
   ); // end findOne
-
-
-// Old way
-// phrasebookModel.findByIdAndUpdate({
-//     _id: id
-//   }, {
-//     $set: {
-//       favorite: true
-//     }
-//   },
-//   function(err, data) {
-//     if (err) {
-//       console.log('remove error:', err);
-//       res.sendStatus(500);
-//     } else {
-//       res.sendStatus(200);
-//     }
-//   }
-// );
 }); // end router put favorite
 
 
@@ -151,35 +122,37 @@ router.get('/favorite', function(req, res) {
   console.log('phrasebookObjects get call');
 
   // find on Users, return the favorites array
-
-
-  // Old way
-  // phrasebookModel.find({
-  //   username: req.user.username,
-  //   favorite: true
-  // }).then(function(results) {
-  //   res.send(results);
-  // }).catch(function(err){
-  //   res.sendStatus(500);
-  // });
+  Users.findById(req.user._id).populate('favorites').
+  exec(function (err, user) {
+    if (err) return handleError(err);
+    console.log('in favorite', user);
+    res.send(user);
+  });
 }); // end router get favorite
 
 
 router.put('/favorite/remove/:id', function(req, res) {
   var id = req.params.id;
-  phrasebookModel.findByIdAndUpdate({
-      _id: id
-    }, {
-      $set: {
-        favorite: false
-      }
-    },
-    function(err, data) {
+
+  // find the user
+  Users.findById(req.user._id,
+    function(err, user) {
       if (err) {
-        console.log('remove error:', err);
         res.sendStatus(500);
       } else {
-        res.sendStatus(200);
+        // deleting the phrase id of favorites by indexOf
+        user.favorites.splice(user.favorites.indexOf(id), 1);
+
+          // <- splice the id out of the array
+        console.log('in delete favorites id', user.favorites.indexOf(id));
+        // save the user
+        user.save(function(err) {
+          if (err) {
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(200);
+          }
+        });
       }
     }
   );

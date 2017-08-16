@@ -10,7 +10,7 @@
       <button class="englishBtn" ng-click="pc.englishPhrases()">English</button>
     </div>
 
-    <div class="all-phrases">
+    <div class="all-phrases col-md-4">
      <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.listPhrase">
        {{ phrases.username }} :
        <br>
@@ -27,7 +27,7 @@
       </p>
     </div>
 
-    <div class="spanish-phrases">
+    <div class="spanish-phrases col-md-4">
       <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.spanishPhrase">
         {{ phrases.username }} :
         <br>
@@ -41,7 +41,7 @@
       </p>
     </div>
 
-    <div class="english-phrases">
+    <div class="english-phrases col-md-4">
       <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.englishPhrase">
         {{ phrases.username }} :
         <br>
