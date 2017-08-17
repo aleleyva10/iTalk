@@ -2,6 +2,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var translate = require('google-translate-api');
+
+
 
 // Express router to mount phrasebook related functions on.
 var router = express.Router();
@@ -91,72 +94,125 @@ router.put('/:id', function(req, res) {
 }); // end router put
 
 
-router.put('/favorite/:id', function(req, res) {
-  console.log('phrasebookObjects url hit', req.params);
-  var id = req.params.id;
+router.get('/translate/english/:id', function(req, res) {
+      console.log('phrasebookObjects url hit', req.params);
+      var id = req.params.id;
 
-  // find the user
-  Users.findById(req.user._id,
-    function(err, user) {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        // push to id favorites
-        user.favorites.push(id);
-        console.log('in update favorites id');
-        // save the user
-        user.save(function(err) {
+      // find the favorite phrase
+      phrasebookModel.findById(req.params.id,
+        function(err, foundPhrase) {
           if (err) {
             res.sendStatus(500);
           } else {
-            res.sendStatus(200);
+            console.log('in update favorites id');
+            translate(foundPhrase.enphrase, {
+              to: 'es'
+            }).then(function(response) {
+              res.send(response);
+              console.log(response.text);
+              //=> I speak English
+              console.log(response.from.language.iso);
+            }).catch(function(err) {
+              console.error(err);
+              res.sendStatus(500);
+            });
           }
-        });
-      }
-    }
-  ); // end findOne
-}); // end router put favorite
+      });
+    }); // end english get route
+
+    router.get('/translate/spanish/:id', function(req, res) {
+          console.log('phrasebookObjects url hit', req.params);
+          var id = req.params.id;
+
+          // find the favorite phrase
+          phrasebookModel.findById(req.params.id,
+            function(err, foundPhrase) {
+              if (err) {
+                res.sendStatus(500);
+              } else {
+                console.log('in update favorites id');
+                translate(foundPhrase.esphrase, {
+                  to: 'en'
+                }).then(function(response) {
+                  res.send(response);
+                  console.log(response.text);
+                  //=> I speak English
+                  console.log(response.from.language.iso);
+                }).catch(function(err) {
+                  console.error(err);
+                  res.sendStatus(500);
+                });
+              }
+          });
+        }); // end spanish get route
 
 
-router.get('/favorite', function(req, res) {
-  console.log('phrasebookObjects get call');
+    router.put('/favorite/:id', function(req, res) {
+      console.log('phrasebookObjects url hit', req.params);
+      var id = req.params.id;
 
-  // find on Users, return the favorites array
-  Users.findById(req.user._id).populate('favorites').
-  exec(function (err, user) {
-    if (err) return handleError(err);
-    console.log('in favorite', user);
-    res.send(user);
-  });
-}); // end router get favorite
-
-
-router.put('/favorite/remove/:id', function(req, res) {
-  var id = req.params.id;
-
-  // find the user
-  Users.findById(req.user._id,
-    function(err, user) {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        // deleting the phrase id of favorites by indexOf
-        user.favorites.splice(user.favorites.indexOf(id), 1);
-
-          // <- splice the id out of the array
-        console.log('in delete favorites id', user.favorites.indexOf(id));
-        // save the user
-        user.save(function(err) {
+      // find the user
+      Users.findById(req.user._id,
+        function(err, user) {
           if (err) {
             res.sendStatus(500);
           } else {
-            res.sendStatus(200);
+            // push to id favorites
+            user.favorites.push(id);
+            console.log('in update favorites id');
+            // save the user
+            user.save(function(err) {
+              if (err) {
+                res.sendStatus(500);
+              } else {
+                res.sendStatus(200);
+              }
+            });
           }
-        });
-      }
-    }
-  );
-}); // end router delete
+        }
+      ); // end findOne
+    }); // end router put favorite
 
 
-module.exports = router;
+    router.get('/favorite', function(req, res) {
+      console.log('phrasebookObjects get call');
+
+      // find on Users, return the favorites array
+      Users.findById(req.user._id).populate('favorites').
+      exec(function(err, user) {
+        if (err) return handleError(err);
+        console.log('in favorite', user);
+        res.send(user);
+      });
+    }); // end router get favorite
+
+
+    router.put('/favorite/remove/:id', function(req, res) {
+      var id = req.params.id;
+
+      // find the user
+      Users.findById(req.user._id,
+        function(err, user) {
+          if (err) {
+            res.sendStatus(500);
+          } else {
+            // deleting the phrase id of favorites by indexOf
+            user.favorites.splice(user.favorites.indexOf(id), 1);
+
+            // <- splice the id out of the array
+            console.log('in delete favorites id', user.favorites.indexOf(id));
+            // save the user
+            user.save(function(err) {
+              if (err) {
+                res.sendStatus(500);
+              } else {
+                res.sendStatus(200);
+              }
+            });
+          }
+        }
+      );
+    }); // end router delete
+
+
+    module.exports = router;

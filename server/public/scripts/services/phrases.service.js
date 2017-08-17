@@ -87,5 +87,28 @@ myApp.service('PhrasesService', function($http) {
     }); // end $http
   }; // end deleteFavorites
 
+  sv.translateFavoritesEs = function(id) {
+    console.log('in service, translateFavoritesEs');
+    return $http({
+      method: 'GET',
+      url: '/phrasebook/translate/spanish/' + id,
+    }).then(function(response) {
+      console.log('back from translateFavoritesEs', response);
+      return response;
+    });
+  }; // end translateFavoritesEs
+
+
+  sv.translateFavoritesEn = function(id) {
+    console.log('in service, translateFavoritesEn');
+    return $http({
+      method: 'GET',
+      url: '/phrasebook/translate/english/' + id,
+    }).then(function(response) {
+      console.log('back from translateFavoritesEn', response);
+      return response;
+    });
+  }; // end translateFavoritesEn
+
 
 }); // end service

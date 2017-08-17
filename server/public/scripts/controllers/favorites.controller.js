@@ -5,7 +5,7 @@ myApp.controller('FavoritesController', function($scope, UserService, PhrasesSer
   vm.userObject = UserService.userObject;
   vm.favorites = [];
   vm.phrasebook = [];
-  vm.allPhrases =[];
+  vm.allPhrases = [];
 
   $scope.responsiveVoice = responsiveVoice;
 
@@ -32,6 +32,26 @@ myApp.controller('FavoritesController', function($scope, UserService, PhrasesSer
       vm.getFavorites();
     });
   }; // end deleteFavorites
+
+  vm.translateFavoritesEs = function(phrases) {
+    console.log('in translate favorites', phrases);
+    PhrasesService.translateFavoritesEs(phrases._id).then(function(response) {
+      swal(
+        response.data.text,
+        phrases.esphrase
+      );
+    });
+  }; // end translateFavoritesEs
+
+  vm.translateFavoritesEn = function(phrases) {
+    console.log('in translate favorites', phrases);
+    PhrasesService.translateFavoritesEn(phrases._id).then(function(response) {
+      swal(
+        phrases.enphrase,
+        response.data.text
+      );
+    });
+  }; // end translateFavoritesEn
 
 
   vm.getFavorites();

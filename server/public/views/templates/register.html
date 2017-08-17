@@ -5,17 +5,18 @@
     <h1 class="lead">Register User</h1>
     <h2 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
     <form ng-submit="lc.registerUser()">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" class="user-input" ng-model="lc.user.username" />
+      <div class="form-group">
+        <label class="form-control-label" for="username"> Username</label>
+        <input type="text" class="form-control" id="user-input" placeholder="username" ng-model="lc.user.username" />
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" class="user-password" ng-model="lc.user.password" />
+      <div class="form-group">
+        <label class="form-control-label" for="password"> Password</label>
+        <input type="password" class="form-control" id="user-password" placeholder="password" ng-model="lc.user.password" />
       </div>
       <input class="submitBtn btn btn-default" type="submit" name="submit" value="Register" />
       <a href="#home">Cancel</a>
     </form>
   </div>
+
 
 </div>

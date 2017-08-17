@@ -2,33 +2,28 @@
 <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!! </h1>
 <h4> Enter a phrase or word in Spanish or English </h4>
 
-
 <div class="container">
-
-<select class="ui search selection dropdown" id="search-select">
-  <option value="">Select language</option>
-  <option value="SP">Spanish</option>
-  <option value="EN">English</option>
-  <option value="FR">French</option>
-</select>
-
-
-
-<form class="ui form">
-  <div class="spanish-field">
-    <label>Spanish</label>
-    <input type="text" id="spanish-phrase" ng-model="uc.esphrase" placeholder="Enter a word">
-  </div>
-  <div class="english-field">
-    <label>English</label>
-    <input type="text" id="english-phrase" ng-model="uc.enphrase" placeholder="Enter a word">
-  </div>
-    <button type="button" class="addBtn btn btn-success" ng-click="uc.addToPhrasebook()"><span class="glyphicon glyphicon-plus"></span> Add</button>
-<button class="btn btn-danger" ng-click="uc.userService.logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</button>
-</form>
+  <form>
+    <br>
+    <div class="row">
+      <br>
+      <div class="col-md-6 mb-3">
+        <label for="spanish-phrase">Spanish</label>
+        <input type="text" class="form-control is-valid" id="spanish-input" ng-model="uc.esphrase" placeholder="Enter a word" required>
+      </div>
+      <br>
+      <div class="col-md-6 mb-3">
+        <label for="english-phrase">English</label>
+        <input type="text" class="form-control is-valid" id="english-input" ng-model="uc.enphrase" placeholder="Enter a word" required>
+      </div>
+      <br>
+      <div class="col-md-6 mb-3">
+        <button type="button" class="addBtn btn btn-success" ng-click="uc.addToPhrasebook()"><span class="glyphicon glyphicon-plus"></span> Add</button>
+        <button class="btn btn-danger" ng-click="uc.userService.logout()"><span class="glyphicon glyphicon-log-out"></span> Log Out</button>
+      </div>
+    </div>
+  </form>
 </div>
-
-
 
 
 

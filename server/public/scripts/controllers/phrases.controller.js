@@ -1,4 +1,4 @@
-myApp.controller('PhrasesController', function(PhrasesService, UserService) {
+myApp.controller('PhrasesController', function($scope, PhrasesService, UserService) {
   console.log('PhrasesController created');
   var vm = this;
   vm.userService = UserService;
@@ -9,6 +9,9 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
   vm.phrasebook = [];
   vm.favorites = [];
   vm.allPhrases = [];
+
+  $scope.responsiveVoice = responsiveVoice;
+
 
   vm.getPhrasebook = function() {
     console.log('in controller, getPhrasebook');
@@ -111,6 +114,26 @@ myApp.controller('PhrasesController', function(PhrasesService, UserService) {
     }).catch(swal.noop);
 
   }; // end deleteFavorites
+
+  vm.translateFavoritesEs = function(phrases) {
+    console.log('in translate favorites', phrases);
+    PhrasesService.translateFavoritesEs(phrases._id).then(function(response) {
+      swal(
+        phrases.enphrase,
+        response.data.text
+      );
+    });
+  };
+
+  vm.translateFavoritesEn = function(phrases) {
+    console.log('in translate favorites', phrases);
+    PhrasesService.translateFavoritesEn(phrases._id).then(function(response) {
+      swal(
+        phrases.esphrase,
+        response.data.text
+      );
+    });
+  };
 
   vm.phrasesList = function() {
     vm.listPhrase = !vm.listPhrase;

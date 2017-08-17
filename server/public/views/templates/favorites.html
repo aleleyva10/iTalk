@@ -10,6 +10,7 @@
       <br>
       <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
       <button class="deleteBtn" ng-click='fc.deleteFavorites(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
+      <button class="translateBtn" ng-click='fc.translateFavoritesEs(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
       <input ng-click="responsiveVoice.speak(phrases.esphrase, 'Spanish Female');" type="button" value="🔊 Play" />
     </p>
   </div>
@@ -21,6 +22,7 @@
       <br>
       <span class="label label-primary">English</span> {{ phrases.enphrase }}
       <button class="deleteBtn" ng-click='fc.deleteFavorites(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
+      <button class="translateBtn" ng-click='fc.translateFavoritesEn(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
       <input ng-click="responsiveVoice.speak(phrases.enphrase, 'UK English Female');" type="button" value="🔊 Play" />
     </p>
   </div>
