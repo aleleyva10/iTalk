@@ -75,7 +75,6 @@ myApp.controller('PhrasesController', function($scope, PhrasesService, UserServi
   vm.getFavorites = function(phrases) {
     console.log('in get favorites', phrases);
     PhrasesService.getFavorites().then(function() {
-
     });
   }; // end getFavorites
 
@@ -112,28 +111,29 @@ myApp.controller('PhrasesController', function($scope, PhrasesService, UserServi
         );
       }
     }).catch(swal.noop);
-
   }; // end deleteFavorites
+
 
   vm.translateFavoritesEs = function(phrases) {
     console.log('in translate favorites', phrases);
     PhrasesService.translateFavoritesEs(phrases._id).then(function(response) {
       swal(
-        phrases.enphrase,
-        response.data.text
+        response.data.text,
+        phrases.esphrase
       );
     });
-  };
+  }; // end translateFavoritesEs
 
   vm.translateFavoritesEn = function(phrases) {
     console.log('in translate favorites', phrases);
     PhrasesService.translateFavoritesEn(phrases._id).then(function(response) {
       swal(
-        phrases.esphrase,
-        response.data.text
+        response.data.text,
+        phrases.enphrase
       );
     });
-  };
+  }; // end translateFavoritesEn
+
 
   vm.phrasesList = function() {
     vm.listPhrase = !vm.listPhrase;
