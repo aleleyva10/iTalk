@@ -1,26 +1,34 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="favorites-container">
+
   <h3> My Favorite Phrases</h3>
+  <br>
 
 
-  <div class="favorite-spanish">
+  <div class="favorite-spanish col-md-4">
     <h4> Spanish</h4>
-    <p ng-repeat="phrases in fc.allPhrases">
+    <p ng-repeat="phrases in fc.allPhrases"  ng-init="editing=false">
       {{ phrases.username }} :
       <br>
       <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
+      <input type="text" ng-model="phrases.esphrase" ng-show="editing">
+      <button class="saveBtn" ng-click="fc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
+      <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
       <button class="deleteBtn" ng-click='fc.deleteFavorites(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
       <button class="translateBtn" ng-click='fc.translateFavoritesEs(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
       <input ng-click="responsiveVoice.speak(phrases.esphrase, 'Spanish Female');" type="button" value="🔊 Play" />
     </p>
   </div>
 
-  <div class="favorite-english">
+  <div class="favorite-english col-md-4">
     <h4> English</h4>
-    <p ng-repeat="phrases in fc.allPhrases">
+    <p ng-repeat="phrases in fc.allPhrases" ng-init="editing=false">
       {{ phrases.username }} :
       <br>
       <span class="label label-primary">English</span> {{ phrases.enphrase }}
+      <input type="text" ng-model="phrases.enphrase" ng-show="editing">
+      <button class="saveBtn" ng-click="fc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
+      <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
       <button class="deleteBtn" ng-click='fc.deleteFavorites(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
       <button class="translateBtn" ng-click='fc.translateFavoritesEn(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
       <input ng-click="responsiveVoice.speak(phrases.enphrase, 'UK English Female');" type="button" value="🔊 Play" />
