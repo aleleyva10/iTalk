@@ -26,11 +26,38 @@ myApp.controller('FavoritesController', function($scope, UserService, PhrasesSer
   }; // end getFavorites
 
   vm.deleteFavorites = function(phrases) {
-    console.log('in delete', phrases);
-    PhrasesService.deleteFavorites(phrases._id).then(function() {
-      console.log('favorites deleted');
-      vm.getFavorites();
-    });
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: false
+    }).then(function() {
+      console.log('in delete favorites', phrases);
+      PhrasesService.deleteFavorites(phrases._id).then(function(response) {
+        vm.getFavorites();
+      });
+      swal(
+        'Deleted!',
+        'Your phrase has been deleted.',
+        'success'
+      )
+    }, function(dismiss) {
+      // dismiss can be 'cancel', 'overlay', 'close'
+      if (dismiss === 'cancel') {
+        swal(
+          'Cancelled',
+          'Your favorite phrase is safe :)',
+          'error'
+        );
+      }
+    }).catch(swal.noop);
   }; // end deleteFavorites
 
   vm.translateFavoritesEs = function(phrases) {

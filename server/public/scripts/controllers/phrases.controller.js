@@ -100,7 +100,7 @@ myApp.controller('PhrasesController', function($scope, PhrasesService, UserServi
         'Deleted!',
         'Your phrase has been deleted.',
         'success'
-      );
+      )
     }, function(dismiss) {
       // dismiss can be 'cancel', 'overlay', 'close'
       if (dismiss === 'cancel') {

@@ -1,43 +1,44 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="phrasesList">
+  <h3> My Phrasebook </h3>
+  <br>
   <div class="container">
-
-    <h3> My Phrasebook </span></h3>
-    <br>
-
     <div class="btn-container">
       <button class="allBtn" ng-click="pc.phrasesList()">All</button>
       <button class="spanishBtn" ng-click="pc.spanishPhrases()">Spanish</button>
       <button class="englishBtn" ng-click="pc.englishPhrases()">English</button>
     </div>
 
-    <div class="all-phrases col-md-4">
-     <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.listPhrase">
-       {{ phrases.username }} :
-       <br>
+    <div class="all-phrases col-md-3">
+      <h4> All Phrases</h4>
+      <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.listPhrase">
+        {{ phrases.username }} :
+        <br>
         <span class="label label-danger">Spanish</span> {{ phrases.esphrase }}
         <input type="text" ng-model="phrases.esphrase" ng-show="editing">
-        <input type="text" ng-model="phrases.enphrase" ng-show="editing">
+        <!-- <input type="text" ng-model="phrases.enphrase" ng-show="editing"> -->
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
-        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
-        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
         <button class="translateBtn" ng-click='pc.translateFavoritesEs(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
-        <input ng-click="responsiveVoice.speak(phrases.esphrase, 'Spanish Female');" type="button" value="🔊 Play" />
+        <input class="voiceBtn" ng-click="responsiveVoice.speak(phrases.esphrase, 'Spanish Female');" type="button" value="🔊" />
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
+        <br>
         <br>
         <span class="label label-primary">English</span> {{ phrases.enphrase }}
-        <input type="text" ng-model="phrases.esphrase" ng-show="editing">
+        <!-- <input type="text" ng-model="phrases.esphrase" ng-show="editing"> -->
         <input type="text" ng-model="phrases.enphrase" ng-show="editing">
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
-        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
-        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
         <button class="translateBtn" ng-click='pc.translateFavoritesEn(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
-        <input ng-click="responsiveVoice.speak(phrases.enphrase, 'UK English Female');" type="button" value="🔊 Play" />
+        <input class="voiceBtn" ng-click="responsiveVoice.speak(phrases.enphrase, 'UK English Female');" type="button" value="🔊" />
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
       </p>
     </div>
 
-    <div class="spanish-phrases col-md-4">
+    <div class="spanish-phrases col-md-3">
+      <h4> Spanish</h4>
       <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.spanishPhrase">
         {{ phrases.username }} :
         <br>
@@ -45,14 +46,15 @@
         <input type="text" ng-model="phrases.esphrase" ng-show="editing">
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
-        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
-        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
         <button class="translateBtn" ng-click='pc.translateFavoritesEs(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
-        <input ng-click="responsiveVoice.speak(phrases.esphrase, 'Spanish Female');" type="button" value="🔊 Play" />
+        <input class="voiceBtn" ng-click="responsiveVoice.speak(phrases.esphrase, 'Spanish Female');" type="button" value="🔊" />
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
       </p>
     </div>
 
-    <div class="english-phrases col-md-4">
+    <div class="english-phrases col-md-3">
+      <h4> English</h4>
       <p ng-repeat="phrases in pc.allPhrases" ng-init="editing=false" ng-show="pc.englishPhrase">
         {{ phrases.username }} :
         <br>
@@ -60,10 +62,10 @@
         <input type="text" ng-model="phrases.enphrase" ng-show="editing">
         <button class="saveBtn" ng-click="pc.updatePhrases(phrases);editing=!editing" ng-show="editing"><span class="glyphicon glyphicon-check"></span></button>
         <button class="updateBtn" ng-click='editing=!editing' ng-show="!editing"><span class="glyphicon glyphicon-pencil"></span></button>
-        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
-        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
         <button class="translateBtn" ng-click='pc.translateFavoritesEn(phrases)'><span class="glyphicon glyphicon-question-sign"></span></button>
-        <input ng-click="responsiveVoice.speak(phrases.enphrase, 'UK English Female');" type="button" value="🔊 Play" />
+        <input class="voiceBtn" ng-click="responsiveVoice.speak(phrases.enphrase, 'UK English Female');" type="button" value="🔊" />
+        <button class="favoriteBtn" ng-click='pc.addToFavorites(phrases)'><span class="glyphicon glyphicon-heart"></span></button>
+        <button class="deleteBtn" ng-click='pc.deletePhrases(phrases)'><span class="glyphicon glyphicon-trash"></span></button>
       </p>
     </div>
 

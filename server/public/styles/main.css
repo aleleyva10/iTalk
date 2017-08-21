@@ -15,6 +15,17 @@ h1 {
   color: white;
 }
 
+#welcome, h1 {
+  color: white;
+  font-size: 30px;
+}
+
+#welcome-phrase, h4 {
+  color: white;
+  font-size: 18.9px;
+}
+
+
 h2 {
   text-align: center;
   font-size: 25px;
@@ -28,7 +39,8 @@ h3 {
 
 h4 {
   text-align: center;
-  color: white;
+  color: #157DFB;
+
 }
 
 .all-phrases {
@@ -37,6 +49,7 @@ max-width: 25em;
 padding: 1em;
 border-radius: 2em;
 margin: 1em;
+
 }
 
 .spanish-phrases {
@@ -45,6 +58,7 @@ margin: 1em;
   padding: 1em;
   border-radius: 2em;
   margin: 1em;
+
 }
 
 .english-phrases {
@@ -53,6 +67,145 @@ margin: 1em;
   padding: 1em;
   border-radius: 2em;
   margin: 1em;
+
+}
+
+.favorite-spanish {
+  background-color: #EFEEEC;
+  max-width: 25em;
+  padding: 1em;
+  border-radius: 2em;
+  margin: 1em;
+
+}
+
+.favorite-english {
+  background-color: #EFEEEC;
+  max-width: 25em;
+  padding: 1em;
+  border-radius: 2em;
+  margin: 1em;
+
+}
+.allBtn {
+  height: 2em;
+  width: 5em;
+  border-radius: 1em;
+  color: #157DFB;
+  background-color:#F8F8F8;
+}
+
+.allBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.spanishBtn {
+  height: 2em;
+  width: 5em;
+  border-radius: 1em;
+  color: #157DFB;
+  background-color:#F8F8F8;
+}
+
+.spanishBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.englishBtn {
+  height: 2em;
+  width: 5em;
+  border-radius: 1em;
+  color: #157DFB;
+  background-color:#F8F8F8;
+}
+
+.englishBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.saveBtn {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.5em;
+  color: #157DFB;
+  background-color:#FFFFFF;
+
+}
+
+.saveBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.updateBtn {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.5em;
+  color: #157DFB;
+  background-color:#FFFFFF;
+  margin-top: 0.5em;
+
+}
+
+.updateBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.deleteBtn {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.5em;
+  color: #157DFB;
+  background-color:#FFFFFF;
+
+}
+
+.deleteBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.favoriteBtn {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.5em;
+  color: #157DFB;
+  background-color:#FFFFFF;
+}
+
+.favoriteBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.translateBtn {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.5em;
+  color: #157DFB;
+  background-color:#FFFFFF;
+}
+
+.translateBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
+}
+
+.voiceBtn {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.5em;
+  color: #157DFB;
+  background-color:#FFFFFF;
+}
+
+.voiceBtn:hover {
+  color: #F8F8F8;
+  background-color:#157DFB;
 }
 
 .btn-container {
@@ -139,6 +292,7 @@ form {
   background-color: #197BBD;
   width: 100%;
   border-radius: 0px;
+  text-align: center;
 
 }
 
@@ -151,12 +305,12 @@ form {
 
 .navbar li {
   float: left;
+
 }
 
 .navbar li a {
-  display: block;
+  display: inline-block;
   color: white;
-  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
@@ -164,5 +318,5 @@ form {
 /* Change the link color to #111 (black) on hover */
 .navbar li a:hover {
   text-decoration: underline;
-  color: black;
+  color: #111;
 }
